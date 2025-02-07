@@ -8,7 +8,7 @@
   <script src="https://d3js.org/topojson.v3.min.js"></script>
   <style>
     .outline {
-      stroke: black;
+      stroke: #cccccc;
       stroke-width: 1px;
       fill: none;
     }
@@ -107,7 +107,7 @@
         const boundariesData = await d3.json("SF-Neighborhoods.geo.json");
         const neighborhoods = topojson.feature(boundariesData, boundariesData.objects.SFNeighborhoods).features;
 
-        const densityRanges = [0, 10, 20, Infinity];
+        const densityRanges = [0, 2, 5, Infinity];
 
         // https://www.geeksforgeeks.org/d3-js-group-method/
         const treeDensity = d3.groups(data, d => d.qAddress).map(([key, values]) => {
@@ -129,7 +129,7 @@
           .attr("class", "outline")
           .attr("d", path)
           .attr("fill", "none")
-          .attr("stroke", "black")
+          .attr("stroke", "#cccccc")
           .attr("stroke-width", 1);
 
         mapArea.selectAll("circle.tree")
